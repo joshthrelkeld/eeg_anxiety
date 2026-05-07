@@ -1,0 +1,18 @@
+# Raw EEG data files
+*.fdt
+*.edf
+*.set
+*.fif
+*.bdf
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+*.iml
