@@ -1,6 +1,6 @@
 # EEG-Based Anxiety Classification
 
-An end-to-end pipeline for classifying anxiety from resting-state EEG using spectral band power features. Built as part of a neuroscience-to-ML portfolio targeting health AI and clinical operations.
+An end-to-end pipeline for classifying anxiety from resting-state EEG using spectral band power features.
 
 ---
 
