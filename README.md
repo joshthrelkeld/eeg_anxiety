@@ -6,9 +6,17 @@ A system for classifying anxiety from resting-state EEG using spectral band powe
 
 ## Overview
 
-This project investigates whether resting-state EEG spectral features can distinguish anxiety states and traits in a 51-subject dataset. Three classification tasks were evaluated — eyes open vs. eyes closed (EO/EC), state anxiety, and trait anxiety — using logistic regression, random forest, and SVM across both epoch-level and subject-level cross-validation schemes.
+This project asks a simple question: can resting-state EEG predict anxiety?
 
-The central finding is that **temporal alignment predicts classification performance more than model complexity**. EO/EC classification (where the neural label and behavioral state are simultaneous) achieves 67% accuracy, while trait anxiety (a stable disposition measured days or weeks before recording) falls below chance because the signal-label relationship is fundamentally weaker.
+EEG (electroencephalography) measures electrical activity across the scalp. At rest, different mental states produce distinct patterns of oscillatory activity — particularly in the alpha band (8–13 Hz), which reflects cortical inhibition and attentional engagement. Anxiety research has linked reduced frontal alpha power and hemispheric asymmetry to heightened anxious arousal.
+
+This project tests three classification tasks of increasing difficulty:
+
+1. **Eyes Open vs. Eyes Closed (EO/EC):** A control task. Opening your eyes suppresses occipital alpha — a well-established, immediate neural response. The EEG label and behavioral state are simultaneous, so the signal-label relationship is strong.
+2. **State Anxiety:** How anxious a subject felt *during* the session. The label is same-day but still separated from the recording by the time it takes to fill out a questionnaire.
+3. **Trait Anxiety:** How anxious a subject is in *general*, measured days or weeks before the EEG session. The label and the neural signal are temporally decoupled.
+
+The central finding is that **temporal alignment predicts classification performance more than model complexity.** EO/EC achieves 67% accuracy. Trait anxiety falls below chance; not because the models fail, but because the signal-label relationship is fundamentally weaker when the neural state and behavioral label are separated in time.
 
 ---
 
@@ -65,22 +73,46 @@ The pipeline is modular across five files, orchestrated by `main.py`:
 
 ## Installation
 
+## Setup
+
+### 1. Clone the repository
+
 ```bash
 git clone https://github.com/joshthrelkeld/eeg_anxiety.git
 cd eeg_anxiety
 pip install -r requirements.txt
 ```
 
-## Usage
+### 2. Download the dataset
+
+This project uses the [OpenNeuro ds007609](https://openneuro.org/datasets/ds007609/versions/1.0.0) dataset (resting-state EEG, 51 subjects, STAI anxiety labels).
+
+- Go to the OpenNeuro link above and download the dataset
+- You only need the `derivatives/preprocessed/` folder — this contains ICA-cleaned, bandpass-filtered EEG files ready for feature extraction
+- Place it so your local directory looks like this:
+```
+eeg_anxiety/
+├── data/
+│   └── derivatives/
+│       └── preprocessed/
+│           ├── sub-001/
+│           ├── sub-002/
+│           └── ...
+├── main.py
+├── config.py
+└── ...
+```
+### 3. Run the pipeline
 
 ```bash
-# Run full pipeline (uses cached features if available)
+# Run full pipeline (uses cached features if already extracted)
 python main.py
 
-# Re-extract features from raw EEG files
+# Force re-extraction from raw EEG files
 python main.py --rebuild
 ```
 
+Output — model accuracy, F1 scores, confusion matrices, and feature correlation plots — will be saved to the `results/` folder.
 ---
 
 ## Selected Figures
