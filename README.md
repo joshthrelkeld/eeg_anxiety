@@ -1,6 +1,6 @@
 # EEG-Based Anxiety Classification
 
-An end-to-end pipeline for classifying anxiety from resting-state EEG using spectral band power features. Built as part of a neuroscience-to-ML portfolio targeting health AI and clinical operations.
+A system for classifying anxiety from resting-state EEG using spectral band power features. Built as part of a neuroscience-to-ML portfolio targeting health AI and BCI operations.
 
 ---
 
@@ -8,7 +8,7 @@ An end-to-end pipeline for classifying anxiety from resting-state EEG using spec
 
 This project investigates whether resting-state EEG spectral features can distinguish anxiety states and traits in a 51-subject dataset. Three classification tasks were evaluated — eyes open vs. eyes closed (EO/EC), state anxiety, and trait anxiety — using logistic regression, random forest, and SVM across both epoch-level and subject-level cross-validation schemes.
 
-The central finding is that **temporal alignment between neural measurement and psychological target variable predicts classification performance more than model complexity**. EO/EC classification (where the neural label and behavioral state are simultaneous) achieves 67% accuracy, while trait anxiety (a stable disposition measured days or weeks before recording) falls below chance — not because the models fail, but because the signal-label relationship is fundamentally weaker.
+The central finding is that **temporal alignment predicts classification performance more than model complexity**. EO/EC classification (where the neural label and behavioral state are simultaneous) achieves 67% accuracy, while trait anxiety (a stable disposition measured days or weeks before recording) falls below chance because the signal-label relationship is fundamentally weaker.
 
 ---
 
@@ -23,7 +23,7 @@ To reproduce, download the dataset from OpenNeuro and place the `derivatives/pre
 
 ---
 
-## Pipeline
+## System
 
 The pipeline is modular across five files, orchestrated by `main.py`:
 
@@ -98,4 +98,4 @@ python main.py --rebuild
 
 ## Background
 
-Built by Josh Threlkeld, USC Neuroscience '25, as part of a portfolio demonstrating competency at the intersection of neuroscience and machine learning. The project prioritizes interpretability and methodological rigor over algorithmic novelty — the goal is to understand what resting-state EEG can and cannot tell us about anxiety, not to chase benchmark accuracy.
+Built by Josh Threlkeld, University of Southern California Neuroscience '25, as part of a neuroscience and machine learning portfolio. The goal is to understand what resting-state EEG can and cannot tell us about anxiety, rather than chasing benchmark accuracy.
