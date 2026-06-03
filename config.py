@@ -20,7 +20,7 @@ CHANNELS = {
 }
 
 # Bandpass and sampling rate were applied by the dataset authors; listed here
-# for reproducibility. EPOCH_LENGTH and ARTIFACT_THRESH are our decisions.
+# for reproducibility. EPOCH_LENGTH and ARTIFACT_THRESH is my decision.
 BANDPASS_LOW    = 0.1
 BANDPASS_HIGH   = 50.0
 SFREQ           = 500
