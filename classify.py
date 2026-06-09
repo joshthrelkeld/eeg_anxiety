@@ -8,8 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import StratifiedGroupKFold
-from sklearn.metrics import (classification_report, confusion_matrix,
-                             f1_score, accuracy_score)
+from sklearn.metrics import (confusion_matrix,f1_score, accuracy_score)
 from config import FEATURES_DIR, RESULTS_DIR
 
 # Frontal (F3/F4/Fz), occipital (O1/O2), and parietal (Pz) coverage targets
